@@ -8,7 +8,7 @@ public class MultiplayerRegionBypassPlugin : BaseUnityPlugin
 {
     public const string PluginGUID = "sparroh.multiplayerregionbypass";
     public const string PluginName = "MultiplayerRegionBypass";
-    public const string PluginVersion = "1.0.0";
+    public const string PluginVersion = "1.1.0";
 
     internal static new ManualLogSource Logger;
 
