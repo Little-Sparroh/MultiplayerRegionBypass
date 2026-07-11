@@ -1,14 +1,13 @@
-﻿using System.Reflection;
-using BepInEx;
+﻿using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
 
 [BepInPlugin(PluginGUID, PluginName, PluginVersion)]
 [MycoMod(null, ModFlags.IsClientSide)]
-public class RegionBypassPlugin : BaseUnityPlugin
+public class MultiplayerRegionBypassPlugin : BaseUnityPlugin
 {
-    public const string PluginGUID = "sparroh.regionbypass";
-    public const string PluginName = "RegionBypass";
+    public const string PluginGUID = "sparroh.multiplayerregionbypass";
+    public const string PluginName = "MultiplayerRegionBypass";
     public const string PluginVersion = "1.0.0";
 
     internal static new ManualLogSource Logger;
@@ -16,26 +15,18 @@ public class RegionBypassPlugin : BaseUnityPlugin
     private void Awake()
     {
         Logger = base.Logger;
-        var harmony = new Harmony(PluginGUID);
 
-        var tryGetConfigMethod = AccessTools.Method(typeof(PlayerOptions), "TryGetConfig", generics: new[] { typeof(float) });
-        if (tryGetConfigMethod != null)
+        try
         {
-            harmony.Patch(tryGetConfigMethod, new HarmonyMethod(AccessTools.Method(typeof(RegionBypassPlugin), "TryGetConfigFloatPrefix")));
+            var harmony = new Harmony(PluginGUID);
+            harmony.PatchAll(typeof(RegionBypassPatches));
+        }
+        catch (System.Exception ex)
+        {
+            Logger.LogError($"Error applying patches: {ex.Message}");
+            return;
         }
 
         Logger.LogInfo($"{PluginName} loaded successfully.");
-    }
-
-    private static bool TryGetConfigFloatPrefix(ref string key, ref float value, ref bool __result)
-    {
-        if (key == "LobbyDistance")
-        {
-            value = 3.0f;
-            __result = true;
-            Logger.LogInfo("Forced LobbyDistance to 3 (Worldwide)");
-            return false;
-        }
-        return true;
     }
 }

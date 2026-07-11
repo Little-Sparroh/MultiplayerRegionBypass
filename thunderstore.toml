@@ -3,9 +3,9 @@ schemaVersion = "0.0.1"
 
 [package]
 namespace = "Sparroh"
-name = "RegionBypass"
-description = "Bypasses the region lock in the server browser, allowing players to see and join lobbies from all regions worldwide."
-websiteUrl = "https://github.com/Little-Sparroh/RegionBypass"
+name = "MultiplayerRegionBypass"
+description = "Unlocks the Worldwide multiplayer lobby distance option."
+websiteUrl = "https://github.com/Little-Sparroh/MultiplayerRegionBypass"
 containsNsfwContent = false
 
 [package.dependencies]
@@ -17,8 +17,8 @@ readme = "README.md"
 outdir = "build"
 
 [[build.copy]]
-source = "bin/Release/net48/RegionBypass.dll"
-target = "BepInEx/plugins/RegionBypass.dll"
+source = "bin/Release/net48/MultiplayerRegionBypass.dll"
+target = "BepInEx/plugins/MultiplayerRegionBypass.dll"
 
 [[build.copy]]
 source = "CHANGELOG.md"
@@ -34,5 +34,3 @@ communities = [ "mycopunk" ]
 
 [publish.categories]
 mycopunk = [ "client" ]
-
-

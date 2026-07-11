@@ -1,81 +1,53 @@
-# RegionBypass
+# Multiplayer Region Bypass
 
-A BepInEx mod for MycoPunk that bypasses the region lock in the server browser, allowing players to see and join lobbies from all regions worldwide.
+A BepInEx mod for Mycopunk that unlocks the **Worldwide** multiplayer lobby distance option.
 
-## Description
+## Features
 
-MycoPunk's server browser normally only displays lobbies within your region due to Steam's matchmaking regional filtering. This mod patches the game's configuration system to force the lobby search distance to worldwide, bypassing the regional restrictions and allowing you to join ANY lobby regardless of location.
-
-The mod is client-side only and uses Harmony to patch the `PlayerOptions.TryGetConfig` method for robust compatibility across game updates.
+- Extends the lobby distance slider beyond the default range
+- Adds a fourth option: **Close**, **Medium**, **Far**, and **Worldwide**
+- Updates the on-screen label to match the selected distance
 
 ## Getting Started
 
 ### Dependencies
 
-* MycoPunk (base game)
+* Mycopunk (base game)
 * [BepInEx](https://github.com/BepInEx/BepInEx) - Version 5.4.2403 or compatible
-* .NET Framework 4.8
-* [HarmonyLib](https://github.com/pardeike/Harmony) (included via NuGet)
 
-### Building/Compiling
+### Installing
 
-1. Clone this repository and customize the following:
-   - Rename namespace and class names appropriately
-   - Modify PluginGUID to be unique (format: "author.modname")
-   - Update PluginName and PluginVersion
-   - Add your specific Harmony patches and functionality
+**Via Thunderstore (Recommended)**:
+1. Download and install via Thunderstore Mod Manager / r2modman
+2. The mod will be automatically installed to the correct directory
 
-2. Add any additional NuGet packages or references needed for your mod
+**Manual Installation**:
+1. Place `MultiplayerRegionBypass.dll` in your `<Mycopunk Directory>/BepInEx/plugins/` folder
 
-3. Open the solution file in Visual Studio, Rider, or your preferred C# IDE
+### Building
 
-4. Build the project in Release mode to generate the .dll file
+1. Clone this repository
+2. Open the solution in Visual Studio, Rider, or your preferred C# IDE
+3. Build in Release mode
 
-Alternatively, use dotnet CLI:
+Alternatively:
 ```bash
 dotnet build --configuration Release
 ```
 
-### Installing
+## Configuration
 
-**For distribution as a completed mod:**
-
-**Option 1: Via Thunderstore (Recommended)**
-1. Update `thunderstore.toml` with your mod's specific information
-2. Publish using Thunderstore CLI or mod manager
-3. Users download and install via Thunderstore Mod Manager
-
-**Option 2: Manual Distribution**
-1. Package the built .dll, any config files, and README
-2. Users place the .dll in their `<MycoPunk Directory>/BepInEx/plugins/` folder
-
-**Note:** This template is not meant to be installed directly - customize it first for your specific mod functionality.
-
-### Executing program
-
-Once customized and built, the mod will automatically load through BepInEx when the game starts. Check the BepInEx console for loading confirmation messages.
-
-### Mod Development Structure
-
-- **Plugin.cs:** Main plugin class with Awake method and Harmony initialization
-- **thunderstore.toml:** Publishing configuration for Thunderstore
-- **CSPROJECT.csproj:** Build configuration with proper references
-- **Resources:** Icon and documentation placeholders
+No configuration required. The Worldwide lobby distance option is enabled automatically when the mod loads.
 
 ## Help
 
-* **First time modding?** Check BepInEx documentation and MycoPunk modding resources
-* **Harmony patches failing?** Ensure method signatures match the game's IL
-* **Dependency issues?** Update NuGet packages and verify .NET runtime version
-* **Thunderstore publishing?** Update all metadata in thunderstore.toml before publishing
-* **Plugin not loading?** Check BepInEx logs for errors and verify GUID uniqueness
+* **Mod not loading?** Verify BepInEx is installed correctly and check the BepInEx console for errors
+* **Option missing?** Confirm the mod loaded successfully and that you are looking at the multiplayer lobby distance setting
 
 ## Authors
 
-* Sparroh (MycoPunk mod collection maintainer)
-* funlennysub (original BepInEx template)
-* [@DomPizzie](https://twitter.com/dompizzie) (README template)
+- Sparroh
 
 ## License
 
-* This project is licensed under the MIT License - see the LICENSE.md file for details
+This project is licensed under the MIT License - see the LICENSE file for details
